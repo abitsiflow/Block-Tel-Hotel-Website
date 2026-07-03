@@ -1,0 +1,10 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-image: url(images\Block-Tel-Hotel.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}

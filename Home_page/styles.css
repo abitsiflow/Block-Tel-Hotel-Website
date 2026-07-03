@@ -1,10 +1,199 @@
+:root {
+    --ink: #1c2b27;
+    --gold: #b8935f;
+    --gold-soft: #d8c39f;
+    --cream: #f6f1e7;
+    --white: #ffffff;
+    --muted: #6b6259;
+}
+
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 body {
-    background-image: url(images\Block-Tel-Hotel.jpg);
+    background-color: var(--cream);
+    font-family: "Jost", sans-serif;
+    color: var(--ink);
+    
+}
+
+/* ---------- Nav ---------- */
+
+#site-nav {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 6vw;
+    background: var(--cream);
+}
+
+.nav-mark {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.4rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 400;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+    opacity: 1;
+    border-bottom: 1px solid var(--gold);
+}
+
+/* ---------- Hero text (plain background, sits above the photo) ---------- */
+
+#title-header {
+    width: 100%;
+    padding: 4.5rem 6vw 3.5rem;
+    text-align: center;
+    background: var(--cream);
+}
+
+.eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.1rem;
+}
+
+#title-header h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 700;
+    font-size: clamp(2.6rem, 6vw, 4.4rem);
+    color: var(--ink);
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tagline {
+    margin-top: 1.1rem;
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+}
+
+.cta {
+    display: inline-block;
+    margin-top: 2.2rem;
+    padding: 0.9rem 2.2rem;
+    border: 1px solid var(--gold);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+.cta:hover,
+.cta:focus-visible {
+    background: var(--gold);
+    color: var(--white);
+}
+
+/* ---------- Photo band (this is what to adjust for framing) ---------- */
+
+#hero-photo {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    background-image: url("../images/Block-Tel-Hotel.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+
+    /* This line is the one to tune: horizontal, vertical.
+       "center 40%" keeps the horizon roughly a third of the way down
+       the frame instead of dead-center — closest match to the reference. */
+    background-position: center 40%;
+}
+
+#hero-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse at center,
+         rgba(0, 0, 0, 0) 50%,
+         rgba(0, 0, 0, 0.45) 100%
+         
+    );
+    pointer-events: none;
+}
+
+
+/* ---------- Welcome strip ---------- */
+
+.welcome-strip {
+    padding: 4.5rem 6vw;
+    text-align: center;
+    background: var(--cream);
+}
+
+.welcome-strip p {
+    max-width: 560px;
+    margin: 0 auto;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+/* ---------- Footer ---------- */
+
+#site-footer {
+    padding: 1.6rem;
+    text-align: center;
+    background: var(--ink);
+    color: var(--gold-soft);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 640px) {
+    #site-nav {
+        padding: 20px 5vw;
+    }
+    .nav-links {
+        gap: 1.2rem;
+    }
+    .nav-links a {
+        font-size: 0.68rem;
+    }
+    #title-header {
+        padding: 3rem 1.6rem 2.4rem;
+    }
+    #hero-photo {
+        height: 50vh;
+    }
 }

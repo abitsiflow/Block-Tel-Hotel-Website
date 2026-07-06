@@ -4,21 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Block-Tel Hotel Contact Us</title>
-    <link rel="stylesheet" href="book_room.css">
+    <link rel="stylesheet" href="contact_form.css">
 </head>
 <body>
     <main>
-        <form action="contact_form.html" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+        <div class="eyebrow">Get in Touch</div>
+            <h1>Contact Us</h1>
+        <div class="tagline">We'd love to hear from you!</div>
+          <form action="contact_form.html" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
 
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
 
             <button type="submit">Send Message</button>
+            
+            <footer>
+                <p>&copy; Block-Tel Hotel</p>
+            </footer>
         </form>
     </main>
 </body>

@@ -22,8 +22,13 @@ body {
 
 main {
     display: flex;
-    justify-content: center;
-    padding: 4rem 6vw;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
 }
 
 .form-wrapper {
@@ -37,7 +42,7 @@ main {
 }
 
 .form-wrapper .eyebrow {
-    font-size: 0.78rem;
+    font-size: 1.30rem;
     color: var(--muted);
     margin-bottom: 1rem;
     text-transform: uppercase;
@@ -73,7 +78,7 @@ input,textarea{
     background: var(--white);
     color: var(--ink);
     transition: border-color 0.25s ease;
-    box-shadow: 0 0 0.25s ease;  
+   
 }
 
 textarea {
@@ -110,8 +115,8 @@ button[type="submit"]:focus-visible {
     main {
         padding: 2rem 4vw;
     }
-    .form-wrapper {
-        font-size: 1.8rem;
+    .form-wrapper h1 {
+        font-size: 2.2rem;
     }
     input, textarea {
         padding: 0.7rem;

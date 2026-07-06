@@ -52,17 +52,81 @@ main {
     color: var(--muted);
 }
 
-
 label{
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 600;
+    font-size: 0.78rem;
+    color: var(--ink);
+    letter-spacing: 0.05em;
+
 }
 
-input[name="name"] {
-    display: block;
+
+input,textarea{
     width: 100%;
     padding: 0.5rem;
-    border: 1px solid var(--muted);   
+    font-family: "jost", sans-serif;
+    font-size: 1rem;
+    border: 1px solid var(--muted);
+    border-radius: 5px;
+    background: var(--white);
+    color: var(--ink);
+    transition: border-color 0.25s ease;
+    box-shadow: 0 0 0.25s ease;  
 }
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(184, 147, 95, 0.3);
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 0.9rem;
+    margin-top: 0.5rem;
+    background: var(--ink);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:focus-visible {
+    background: var(--gold);
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 2rem 4vw;
+    }
+    .form-wrapper {
+        font-size: 1.8rem;
+    }
+    input, textarea {
+        padding: 0.7rem;
+    }
+}
+
+#site-footer {
+    padding: 1.6rem;
+    text-align: center;
+    background: var(--ink);
+    color: var(--gold-soft);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+
 

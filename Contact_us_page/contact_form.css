@@ -1,29 +1,5 @@
-:root {
-    --ink: #1c2b27;
-    --gold: #b8935f;
-    --gold-soft: #d8c39f;
-    --cream: #f6f1e7;
-    --white: #ffffff;
-    --muted: #6b6259;
-}
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
 html, body {
     height: 100%;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: var(--cream);
-    font-family: "Jost", sans-serif;
-    color: var(--ink);
 }
 
 /* ---------- Nav (matches homepage) ---------- */

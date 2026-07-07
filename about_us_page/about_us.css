@@ -21,3 +21,27 @@ body {
     font-family: "Jost", sans-serif;
     color: var(--ink);
 }
+
+#title-header {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: var(--cream);
+    border-bottom: 2px solid var(--gold-soft);
+}
+
+.section-about-us {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-about-us h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--ink);
+}
+.section-about-us p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--muted);
+}

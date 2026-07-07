@@ -101,10 +101,9 @@ main {
 }
 
 #title-header {
-    text-align: center;
-    padding: 60px 20px;
-    background-color: var(--cream);
-    border-bottom: 2px solid var(--gold-soft);
+    font-family: "Comorant Garamond", serif;
+    font-size: (2.5rem, 5vw, 3rem);
+    margin-bottom: 2rem;
 }
 
 .section-about-us {
@@ -122,4 +121,8 @@ main {
     font-size: 1.1rem;
     line-height: 1.6;
     color: var(--muted);
+}
+
+.section-about-us + .section-about-us {
+    margin-top: 40px;
 }

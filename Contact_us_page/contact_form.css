@@ -13,97 +13,288 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     background-color: var(--cream);
     font-family: "Jost", sans-serif;
     color: var(--ink);
-    
 }
 
-main {
+/* ---------- Nav (matches homepage) ---------- */
+
+#site-nav {
+    position: relative;
+    z-index: 10;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: 28px 6vw;
+    background: var(--cream);
+    border-bottom: 2px solid var(--gold-soft);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+#site-nav:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-bottom-color: var(--gold);
+}
+
+.nav-mark {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.4rem;
+    list-style: none;
+}
+
+.nav-links a {
+    position: relative;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    padding-bottom: 4px;
+    transition: opacity 0.25s ease;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.35s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible,
+.nav-links a[aria-current="page"] {
+    opacity: 1;
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after,
+.nav-links a[aria-current="page"]::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* ---------- Main / layout ---------- */
+
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4.5rem 6vw;
+}
+
+/* ---------- Contact card: split panel ---------- */
+
+.contact-card {
+    width: 100%;
+    max-width: 920px;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: 0 20px 50px rgba(28, 43, 39, 0.16);
+    overflow: hidden;
+}
+
+/* ---------- Left: brand / info panel ---------- */
+
+.contact-panel {
+    position: relative;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 3rem 2.5rem;
+    display: flex;
     flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.monogram {
+    position: absolute;
+    top: -1.5rem;
+    right: -1rem;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 700;
+    font-size: 14rem;
+    line-height: 1;
+    color: rgba(246, 241, 231, 0.06);
+    pointer-events: none;
+    user-select: none;
+}
+
+.contact-panel .eyebrow {
+    position: relative;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 0.9rem;
+}
+
+.contact-panel h1 {
+    position: relative;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: clamp(1.9rem, 2.6vw, 2.3rem);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+}
+
+.panel-intro {
+    position: relative;
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(246, 241, 231, 0.75);
+    max-width: 30ch;
+    margin-bottom: 2.4rem;
+}
+
+.contact-list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.contact-item {
+    padding-top: 1.1rem;
+    border-top: 1px solid rgba(216, 195, 159, 0.25);
+}
+
+.contact-item:first-child {
+    padding-top: 0;
+    border-top: none;
+}
+
+.contact-item dt {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 0.3rem;
+}
+
+.contact-item dd {
+    font-size: 0.92rem;
+    font-weight: 300;
+    color: var(--cream);
+}
+
+.contact-item a {
+    color: var(--cream);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(246, 241, 231, 0.3);
+    transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.contact-item a:hover,
+.contact-item a:focus-visible {
+    color: var(--gold-soft);
+    border-color: var(--gold-soft);
+}
+
+/* ---------- Right: form panel ---------- */
+
+.form-panel {
+    padding: 3rem 2.75rem;
+    display: flex;
+    align-items: center;
+}
+
+form {
+    width: 100%;
+}
+
+.field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
 }
 
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.4rem;
     text-align: left;
 }
 
-.form-wrapper {
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
+.form-group--full {
+    margin-bottom: 1.6rem;
 }
 
-.form-wrapper h1 {
-     font-family: "Cormorant Garamond", serif;
-}
-
-.form-wrapper .eyebrow {
-    font-size: 1.30rem;
-    color: var(--muted);
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.5rem;
-}
-
-.form-wrapper .tagline {
-    font-size: 1.25rem;
-    font-weight: 500;
-    margin-bottom: 2rem;
-    color: var(--muted);
-}
-
-label{
+label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 600;
-    font-size: 0.78rem;
-    color: var(--ink);
-    letter-spacing: 0.05em;
-
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
 }
 
-
-input,textarea{
+input,
+textarea {
     width: 100%;
-    padding: 0.5rem;
-    font-family: "jost", sans-serif;
-    font-size: 1rem;
-    border: 1px solid var(--muted);
-    border-radius: 5px;
-    background: var(--white);
+    padding: 0.65rem 0.75rem;
+    font-family: "Jost", sans-serif;
+    font-size: 0.96rem;
     color: var(--ink);
-    transition: border-color 0.25s ease;
-   
+    background: var(--cream);
+    border: 1px solid var(--gold-soft);
+    border-radius: 6px;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
 textarea {
     resize: vertical;
-    min-height: 120px;
+    min-height: 130px;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
     outline: none;
+    background: var(--white);
     border-color: var(--gold);
-    box-shadow: 0 0 0 3px rgba(184, 147, 95, 0.3);
+    box-shadow: 0 0 0 3px rgba(184, 147, 95, 0.25);
 }
 
 button[type="submit"] {
     width: 100%;
-    padding: 0.9rem;
-    margin-top: 0.5rem;
+    padding: 0.95rem;
+    margin-top: 0.4rem;
     background: var(--ink);
     color: var(--white);
     border: none;
-    border-radius: 5px;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
+    border-radius: 6px;
+    font-size: 0.76rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: background 0.25s ease, color 0.25s ease;
+    transition: background 0.25s ease, transform 0.15s ease;
 }
 
 button[type="submit"]:hover,
@@ -111,17 +302,11 @@ button[type="submit"]:focus-visible {
     background: var(--gold);
 }
 
-@media (max-width: 480px) {
-    main {
-        padding: 2rem 4vw;
-    }
-    .form-wrapper h1 {
-        font-size: 2.2rem;
-    }
-    input, textarea {
-        padding: 0.7rem;
-    }
+button[type="submit"]:active {
+    transform: scale(0.98);
 }
+
+/* ---------- Footer ---------- */
 
 #site-footer {
     padding: 1.6rem;
@@ -133,5 +318,37 @@ button[type="submit"]:focus-visible {
     text-transform: uppercase;
 }
 
+/* ---------- Responsive ---------- */
 
+@media (max-width: 800px) {
+    .contact-card {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+    }
+    .monogram {
+        font-size: 9rem;
+        top: -1rem;
+    }
+}
 
+@media (max-width: 480px) {
+    #site-nav {
+        padding: 20px 5vw;
+    }
+    .nav-links {
+        gap: 1.2rem;
+    }
+    .nav-links a {
+        font-size: 0.68rem;
+    }
+    main {
+        padding: 2.5rem 5vw;
+    }
+    .contact-panel,
+    .form-panel {
+        padding: 2.2rem 1.6rem;
+    }
+    .field-row {
+        grid-template-columns: 1fr;
+    }
+}

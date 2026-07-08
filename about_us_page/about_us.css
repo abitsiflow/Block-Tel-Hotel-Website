@@ -80,19 +80,24 @@
     padding: 30px 30px;
     max-width: 800px;
     margin: 0 auto;
+    padding-bottom: 60px;
 }
 
 .section-about-us h2 {
     font-size: 2rem;
     margin-bottom: 20px;
     color: var(--ink);
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--gold);
 }
 .section-about-us p {
     font-size: 1.1rem;
     line-height: 1.6;
     color: var(--muted);
+    padding-bottom: 10px;
 }
 
 .section-about-us + .section-about-us {
     margin-top: 40px;
+    padding-top: 20px;
 }

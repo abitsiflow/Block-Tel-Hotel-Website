@@ -74,6 +74,8 @@
     font-family: "Comorant Garamond", serif;
     font-size: (2.5rem, 5vw, 3rem);
     margin-bottom: 2rem;
+    text-align: center;
+    justify-content: center;
 }
 
 .section-about-us {
@@ -100,4 +102,6 @@
 .section-about-us + .section-about-us {
     margin-top: 40px;
     padding-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
 }

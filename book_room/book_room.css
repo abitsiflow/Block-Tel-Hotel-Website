@@ -1,3 +1,7 @@
+html, body {
+    height: 100%;
+}
+
 #site-nav {
     position: relative;
     z-index: 10;

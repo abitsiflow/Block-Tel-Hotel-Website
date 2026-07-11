@@ -20,6 +20,59 @@ html, body {
     border-bottom-color: var(--gold);
 }
 
+/* ============================================
+   Added: two-option CTA buttons
+   Nothing above this line was changed.
+   ============================================ */
+
+.cta-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.8rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    font-size: 0.76rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.15s ease;
+}
+
+.btn-primary {
+    background: var(--ink);
+    color: var(--white);
+    border: 1px solid var(--ink);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+    background: var(--gold);
+    border-color: var(--gold);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--gold);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+    background: var(--gold);
+    color: var(--white);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
 .nav-mark {
     font-family: "Cormorant Garamond", serif;
     font-size: 1.6rem;
@@ -232,5 +285,13 @@ button[type="submit"]:active {
     }
     .nav-links a {
         font-size: 0.68rem;
+    }
+}
+
+@media (max-width: 480px){
+    .cta-group {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
     }
 }

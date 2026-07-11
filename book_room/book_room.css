@@ -294,4 +294,40 @@ button[type="submit"]:active {
         align-items: stretch;
         text-align: center;
     }
+
+    /* ============================================
+   Added: two-column layout for the booking page
+   Nothing above this line was changed.
+   ============================================ */
+
+@media (min-width: 900px) {
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        align-items: start;
+        gap: 3.5rem;
+    }
+
+    main > header {
+        grid-column: 1;
+    }
+
+    main > .booking-panel {
+        grid-column: 2;
+        border-left: 1px solid var(--gold-soft);
+        padding-left: 3.5rem;
+    }
+
+    #book-room-header {
+        text-align: left;
+        max-width: none;
+        margin: 0;
+        position: sticky;
+        top: 2.5rem;
+    }
+
+    #book-room-header .cta-group {
+        justify-content: flex-start;
+    }
+}
 }

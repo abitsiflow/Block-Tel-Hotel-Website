@@ -2,75 +2,31 @@ html, body {
     height: 100%;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+/* ---------- Nav ---------- */
+
 #site-nav {
     position: relative;
     z-index: 10;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
     padding: 28px 6vw;
     background: var(--cream);
     border-bottom: 2px solid var(--gold-soft);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    animation: fade-in-down 0.55s ease both;
 }
 
 #site-nav:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     border-bottom-color: var(--gold);
-}
-
-/* ============================================
-   Added: two-option CTA buttons
-   Nothing above this line was changed.
-   ============================================ */
-
-.cta-group {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1.8rem;
-    flex-wrap: wrap;
-}
-
-.btn {
-    display: inline-block;
-    padding: 0.85rem 2rem;
-    font-size: 0.76rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.15s ease;
-}
-
-.btn-primary {
-    background: var(--ink);
-    color: var(--white);
-    border: 1px solid var(--ink);
-}
-
-.btn-primary:hover,
-.btn-primary:focus-visible {
-    background: var(--gold);
-    border-color: var(--gold);
-}
-
-.btn-secondary {
-    background: transparent;
-    color: var(--ink);
-    border: 1px solid var(--gold);
-}
-
-.btn-secondary:hover,
-.btn-secondary:focus-visible {
-    background: var(--gold);
-    color: var(--white);
-}
-
-.btn:active {
-    transform: scale(0.98);
 }
 
 .nav-mark {
@@ -84,6 +40,8 @@ html, body {
 .nav-links {
     display: flex;
     gap: 2.4rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     list-style: none;
 }
 
@@ -125,10 +83,74 @@ html, body {
     transform-origin: left;
 }
 
+/* ---------- CTA buttons ---------- */
+
+.cta-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.8rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    font-size: 0.76rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(28, 43, 39, 0.08);
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.btn-primary {
+    background: var(--ink);
+    color: var(--white);
+    border: 1px solid var(--ink);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+    background: var(--gold);
+    border-color: var(--gold);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--gold);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+    background: var(--gold);
+    color: var(--white);
+}
+
+.btn:hover,
+.btn:focus-visible {
+    box-shadow: 0 12px 24px rgba(28, 43, 39, 0.14);
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* ---------- Main / layout ---------- */
+
 main {
     flex: 1;
-    padding: 3.5re, 6vw 4.5rem;
+    display: block;
+    position: relative;
+    padding: 3.5rem 6vw 4.5rem;
+    overflow: hidden;
 }
+
+/* ---------- Header ---------- */
 
 #book-room-header {
     text-align: center;
@@ -136,53 +158,163 @@ main {
     margin: 0 auto 2.5rem;
 }
 
-#book-room-header .eyebrow{
+#book-room-header::before {
+    content: "";
+    display: block;
+    min-height: clamp(190px, 26vw, 280px);
+    margin-bottom: 1.8rem;
+    border-radius: 8px;
+    background:
+        linear-gradient(180deg, rgba(28, 43, 39, 0.08), rgba(28, 43, 39, 0.22)),
+        url("../images/Block-Tel-Hotel-Room.png") center / cover;
+    box-shadow: 0 18px 34px rgba(28, 43, 39, 0.16);
+    animation: fade-in-up 0.65s ease both;
+}
+
+#book-room-header .eyebrow {
     font-size: 0.72rem;
     letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--gold);
     margin-bottom: 0.7rem;
+    animation: fade-in-up 0.6s ease 0.08s both;
 }
 
 #book-room-header h1 {
     font-family: "Cormorant Garamond", serif;
     font-weight: 700;
-    font-size: clamp(2.2rem,5vw, 3rem);
-    margin-bottom:0.7rem;
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    margin-bottom: 0.7rem;
+    animation: fade-in-up 0.6s ease 0.16s both;
 }
 
-/*---------- Booking panel ------------*/
+#book-room-header .tagline {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--muted);
+    animation: fade-in-up 0.6s ease 0.24s both;
+}
+
+#book-room-header .cta-group {
+    animation: fade-in-up 0.6s ease 0.32s both;
+}
+
+/* ---------- Booking panel ---------- */
 
 .booking-panel {
+    position: relative;
     max-width: 640px;
     margin: 0 auto;
     background: var(--white);
-    border-radius: 12px;
+    border-radius: 8px;
     padding: 2.5rem 3rem;
     box-shadow:
         0 1px 2px rgba(28, 43, 39, 0.06),
         0 18px 34px rgba(28, 43, 39, 0.1);
+    overflow: hidden;
+    animation: fade-in-up 0.65s ease 0.18s both;
+}
+
+.booking-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), #6f9085, var(--ink));
+}
+
+.booking-flow {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid var(--gold-soft);
+    list-style: none;
+}
+
+.booking-flow li {
+    position: relative;
+    min-width: 0;
+}
+
+.booking-flow li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 1rem;
+    left: calc(2rem + 0.35rem);
+    right: -0.4rem;
+    height: 1px;
+    background: var(--gold-soft);
+}
+
+.booking-flow span {
+    position: relative;
+    z-index: 1;
+    display: inline-grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: 0.55rem;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--white);
+    font-size: 0.78rem;
+    font-weight: 600;
+    box-shadow: 0 8px 16px rgba(28, 43, 39, 0.14);
+}
+
+.booking-flow strong,
+.booking-flow small {
+    display: block;
+}
+
+.booking-flow strong {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.booking-flow small {
+    margin-top: 0.25rem;
+    color: var(--muted);
+    font-size: 0.76rem;
+    line-height: 1.35;
 }
 
 form {
     width: 100%;
 }
- 
+
 .field-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.2rem;
+    animation: fade-in-up 0.55s ease both;
 }
- 
+
+.field-row:nth-of-type(1) {
+    animation-delay: 0.28s;
+}
+
+.field-row:nth-of-type(2) {
+    animation-delay: 0.36s;
+}
+
+.field-row:nth-of-type(3) {
+    animation-delay: 0.44s;
+}
+
 .form-group {
     margin-bottom: 1.4rem;
     text-align: left;
 }
- 
+
 .form-group--full {
     margin-bottom: 1.6rem;
+    animation: fade-in-up 0.55s ease 0.52s both;
 }
- 
+
 label {
     display: block;
     margin-bottom: 0.5rem;
@@ -192,7 +324,7 @@ label {
     text-transform: uppercase;
     color: var(--muted);
 }
- 
+
 input,
 select,
 textarea {
@@ -204,18 +336,18 @@ textarea {
     background: var(--cream);
     border: 1px solid var(--gold-soft);
     border-radius: 6px;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
- 
+
 select {
     cursor: pointer;
 }
- 
+
 textarea {
     resize: vertical;
     min-height: 100px;
 }
- 
+
 input:focus,
 select:focus,
 textarea:focus {
@@ -223,8 +355,9 @@ textarea:focus {
     background: var(--white);
     border-color: var(--gold);
     box-shadow: 0 0 0 3px rgba(184, 147, 95, 0.25);
+    transform: translateY(-1px);
 }
- 
+
 button[type="submit"] {
     width: 100%;
     padding: 0.95rem;
@@ -237,20 +370,24 @@ button[type="submit"] {
     letter-spacing: 0.14em;
     text-transform: uppercase;
     cursor: pointer;
-    transition: background 0.25s ease, transform 0.15s ease;
+    box-shadow: 0 12px 24px rgba(28, 43, 39, 0.14);
+    animation: fade-in-up 0.55s ease 0.6s both;
+    transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
- 
+
 button[type="submit"]:hover,
 button[type="submit"]:focus-visible {
     background: var(--gold);
+    box-shadow: 0 16px 30px rgba(28, 43, 39, 0.18);
+    transform: translateY(-2px);
 }
- 
+
 button[type="submit"]:active {
     transform: scale(0.98);
 }
- 
+
 /* ---------- Footer ---------- */
- 
+
 #site-footer {
     padding: 1.6rem;
     text-align: center;
@@ -260,45 +397,8 @@ button[type="submit"]:active {
     letter-spacing: 0.12em;
     text-transform: uppercase;
 }
- 
+
 /* ---------- Responsive ---------- */
- 
-@media (max-width: 640px) {
-    main {
-        padding: 2.5rem 5vw 3.5rem;
-    }
-    .booking-panel {
-        padding: 2rem 1.6rem;
-    }
-    .field-row {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-}
- 
-@media (max-width: 480px) {
-    #site-nav {
-        padding: 20px 5vw;
-    }
-    .nav-links {
-        gap: 1.2rem;
-    }
-    .nav-links a {
-        font-size: 0.68rem;
-    }
-}
-
-@media (max-width: 480px){
-    .cta-group {
-        flex-direction: column;
-        align-items: stretch;
-        text-align: center;
-    }
-
-    /* ============================================
-   Added: two-column layout for the booking page
-   Nothing above this line was changed.
-   ============================================ */
 
 @media (min-width: 900px) {
     main {
@@ -330,4 +430,130 @@ button[type="submit"]:active {
         justify-content: flex-start;
     }
 }
+
+@media (max-width: 640px) {
+    main {
+        padding: 2.5rem 5vw 3.5rem;
+    }
+    .booking-panel {
+        padding: 2rem 1.6rem;
+    }
+    .field-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    .booking-flow {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        row-gap: 1rem;
+    }
+    .booking-flow li::after {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    #site-nav {
+        padding: 20px 5vw;
+        justify-content: center;
+    }
+    .nav-mark {
+        width: 100%;
+        text-align: center;
+    }
+    .nav-links {
+        gap: 1.2rem;
+        justify-content: center;
+    }
+    .nav-links a {
+        font-size: 0.68rem;
+    }
+    .cta-group {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+    .booking-flow {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- Form validation states ---------- */
+
+input.has-error,
+select.has-error,
+textarea.has-error {
+    border-color: #a1503d;
+}
+
+input.has-error:focus,
+select.has-error:focus,
+textarea.has-error:focus {
+    box-shadow: 0 0 0 3px rgba(161, 80, 61, 0.2);
+}
+
+.field-error {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    color: #a1503d;
+}
+
+/* ---------- Thank-you confirmation ---------- */
+
+.thank-you-message {
+    text-align: center;
+    padding: 2.5rem 0 1rem;
+    animation: fade-in-up 0.5s ease both;
+}
+
+.thank-you-message h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 700;
+    font-size: 1.9rem;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+}
+
+.thank-you-message p {
+    color: var(--muted);
+    font-size: 0.96rem;
+    line-height: 1.6;
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in-down {
+    from {
+        opacity: 0;
+        transform: translateY(-12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
 }

@@ -15,11 +15,11 @@
     <nav id="site-nav">
             <span class="nav-mark">Block&#8209;Tel</span>
             <ul class="nav-links">
-                <li><a href="../about_us_page/about_us.html">About Us</a></li>
-                <li><a href="../Room_page/room_page.html">Rooms</a></li>
-                <li><a href="../book_room/book_room.html" aria-current="page">Book a Room</a></li>
-                <li><a href="../Contact_us_page/contact_form.html">Contact</a></li>
-                <li><a href="../Home_page/index.html">Home</a></li>
+                <li><a href="../about_us_page/about_us.php">About Us</a></li>
+                <li><a href="../Room_page/room_page.php">Rooms</a></li>
+                <li><a href="../book_room/book_room.php" aria-current="page">Book a Room</a></li>
+                <li><a href="../Contact_us_page/contact_form.php">Contact</a></li>
+                <li><a href="../Home_page/index.php">Home</a></li>
             </ul>
     </nav>
 

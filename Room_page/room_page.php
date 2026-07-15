@@ -12,11 +12,11 @@
     <nav id="site-nav">
         <span class="nav-mark">Block&#8209;Tel</span>
         <ul class="nav-links">
-            <li><a href="../about_us_page/about_us.html">About Us</a></li>
-            <li><a href="../Room_page/room_page.html">Rooms</a></li>
-            <li><a href="../book_room/book_room.html">Book a Room</a></li>
-            <li><a href="contact_form.html" aria-current="page">Contact</a></li>
-            <li><a href="../Home_page/index.html">Home</a></li>
+            <li><a href="../about_us_page/about_us.php">About Us</a></li>
+            <li><a href="../Room_page/room_page.php">Rooms</a></li>
+            <li><a href="../book_room/book_room.php">Book a Room</a></li>
+            <li><a href="contact_form.php" aria-current="page">Contact</a></li>
+            <li><a href="../Home_page/index.php">Home</a></li>
         </ul>
     </nav>
     

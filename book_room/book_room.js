@@ -10,6 +10,7 @@ const roomType = document.getElementById("room-type");
 const submitForm = document.querySelector("form");
 
 submitForm.addEventListener ("submit", async function(event){
+    event.preventDefault();
 
     if(checkin.value == "" ||checkout.value == "" || guestName.value == "" || guestEmail.value == "" ||roomType.value == "" || guests.value == ""){
             alert("Please Fill up the Fields ")

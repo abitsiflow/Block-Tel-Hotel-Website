@@ -54,7 +54,7 @@
             </section>
 
             <section class="form-panel">
-                <form action="contact_form.html" method="POST" novalidate>
+                <form action="contact_form.php" method="POST" novalidate>
                     <div class="field-row">
                         <div class="form-group">
                             <label for="name">Name</label>

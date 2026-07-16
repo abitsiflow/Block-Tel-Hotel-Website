@@ -61,7 +61,7 @@
                     <small>Send request</small>
                 </li>
             </ol>
-            <form action="book_room.html" method="POST">
+            <form action="book_room.php" method="POST">
                 <div class="field-row">
                     <div class="form-group">
                         <label for="checkin">Check-In</label>

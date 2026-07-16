@@ -61,15 +61,15 @@
                     <small>Send request</small>
                 </li>
             </ol>
-            <form action="book_room.php" method="POST">
+            <form action="../api/addGuest.php" method="POST">
                 <div class="field-row">
                     <div class="form-group">
                         <label for="checkin">Check-In</label>
-                        <input type="date" id="checkin" name="checkin" required>
+                        <input type="date" id="checkin" name="guest-checkin" required>
                     </div>
                     <div class="form-group">
                         <label for="checkout">Check-Out</label>
-                        <input type="date" id="checkout" name="checkout" required>
+                        <input type="date" id="checkout" name="guest-checkout" required>
                     </div>
                 </div>
  
@@ -85,7 +85,7 @@
                     </div>
                     <div class="form-group">
                         <label for="room-type">Room Type</label>
-                        <select id="room-type" name="room-type" required>
+                        <select id="room-type" name="guest-roomType" required>
                             <option value="standard">Standard Room</option>
                             <option value="deluxe">Deluxe Room</option>
                             <option value="suite">Suite</option>
@@ -96,17 +96,17 @@
                 <div class="field-row">
                     <div class="form-group">
                         <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" autocomplete="name" required>
+                        <input type="text" id="name" name="guest-fullname" autocomplete="name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" autocomplete="email" required>
+                        <input type="email" id="email" name="guest-email" autocomplete="email" required>
                     </div>
                 </div>
  
                 <div class="form-group form-group--full">
                     <label for="requests">Special Requests</label>
-                    <textarea id="requests" name="requests" rows="4" placeholder="Optional"></textarea>
+                    <textarea id="requests" name="guest-specialReqs" rows="4" placeholder="Optional"></textarea>
                 </div>
  
                 <button type="submit" id="submit-form">Request Booking</button>

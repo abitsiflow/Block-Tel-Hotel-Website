@@ -11,7 +11,8 @@ create table guests_status(
     guest_roomType CHAR(50),
     guest_specialRequests CHAR(100),
     guest_checkin datetime, 
-    guest_checkout date
+    guest_checkout date,
+    guests int(10)
 );
 
 

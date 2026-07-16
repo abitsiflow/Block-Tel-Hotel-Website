@@ -1,17 +1,18 @@
 <?php
 
 $connection = mysqli_connect(
-    "localhost"
-    "root"
+    "localhost",
+    "root",
+    "",
     "guests_booked"
-    mysqli_query($connection, $sql);
-)
+);
+$sql = "select * from guests_status";
+
+ mysqli_query($connection, $sql);
 
 if(!$connection){
-    die "Connection Failed";
+    die ("Connection Failed");
 }
-
-$sql = "select * from guests_booked";
 
 $result = mysqli_query($connection, $sql);
 ?>

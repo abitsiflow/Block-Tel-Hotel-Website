@@ -3,28 +3,37 @@ const checkout = document.getElementById("checkout");
 const guestName = document.getElementById("name");
 const guestEmail = document.getElementById("email");
 const specialRequests = document.getElementById("requests");
+const guests = document.getElementById("guests");
 const roomType = document.getElementById("room-type");
 
 //For Button
-const submitForm = document.getElementById("submit-form");
+const submitForm = document.querySelector("form");
 
-submitForm.onclick = function(event){
-    event.preventDefault();
+submitForm.addEventListener ("submit", async function(event){
 
-    if(checkin.value == "" ||checkout.value == "" || guestName.value == "" || guestEmail.value == "" ||roomType.value == "")
-        {
-        return alert("Please Fill up the Fields ");
-    }else{
-        submitForm.onclick;
-        console.log("Check in: ", checkin.value);
-        console.log("Check out: ", checkout.value);
-        console.log("Guest's Full Name: ", guestName.value);
-        console.log("Guest Email: ", guestEmail);
-        console.log("Guest Special Request: ", specialRequests);
-        console.log("Room type: ", roomType);
-        alert("Form has been submitted! Thank you for choosing Block-Tel!");   
+    if(checkin.value == "" ||checkout.value == "" || guestName.value == "" || guestEmail.value == "" ||roomType.value == "" || guests.value == ""){
+            alert("Please Fill up the Fields ")
+        return;
     }
-}
+        const formData = new FormData(submitForm);
+
+        try{
+            const response = await fetch(submitForm.action, {
+                method: "POST",
+                body: formData
+            });
+
+            const result = await response.text();
+            console.log(result);
+            alert("Thank you for choosing Block-Tel Website!");
+            submitForm.reset();
+        }catch(err){
+            console.error(err);
+            alert("Something went wrong. Please Try Again");
+        }
+  
+    
+});
 
 
 

@@ -21,5 +21,4 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         die(mysqli_error($connection));
     }
 }
-
 ?>

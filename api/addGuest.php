@@ -18,7 +18,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if($result){
         echo ("Successfully Added!");
     }else{
-        echo ("FAILED TO ADDED :<");
+        die(mysqli_error($connection));
     }
 }
 

@@ -4,7 +4,7 @@ $connection = mysqli_connect(
     "localhost",
     "root",
     "",
-    "guests_booked"
+    "guests_Booked"
 );
 $sql = "select * from guests_status";
 

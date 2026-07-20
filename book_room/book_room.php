@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
      <link rel="stylesheet" href="../global_css/global.css">
      <link rel="stylesheet" href="book_room.css">
+     <!-- Bootstrap CSS (needed for the carousel component) -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -26,6 +28,35 @@
     <main>
         <header>
             <section id="book-room-header">
+                <!-- Bootstrap carousel: swap the slide-2 / slide-3 image paths for real alternate hotel photos -->
+                <div class="header-carousel">
+                    <div id="bookRoomCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#bookRoomCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#bookRoomCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#bookRoomCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="../images/Block-Tel-Hotel-Room.png" alt="Block-Tel Hotel room with warm lighting" decoding="async">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../images/Block-Tel-Hotel-Room-2.png" alt="Block-Tel Hotel alternate view" decoding="async">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../images/Block-Tel-Hotel-Room-3.png" alt="Block-Tel Hotel alternate view" decoding="async">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#bookRoomCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#bookRoomCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
                 <p class="eyebrow">Reserve Your Stay</p>
                 <h1>Book a Room</h1>
                 <p class="tagline">Choose your dates and we'll take care of the rest.</p>
@@ -91,6 +122,8 @@
     <footer id="site-footer">
         <p>&copy; Block-Tel Hotel</p>
     </footer>
+    <!-- Bootstrap JS (needed for the carousel to slide/click) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="book_room.js"></script>
 </body>
 </html>

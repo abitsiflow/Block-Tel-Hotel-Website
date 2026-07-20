@@ -35,28 +35,6 @@
 
  
         <section class="booking-panel" id="booking-form" aria-label="Booking request form">
-            <ol class="booking-flow" aria-label="Booking flow">
-                <li>
-                    <span>1</span>
-                    <strong>Dates</strong>
-                    <small>Check availability</small>
-                </li>
-                <li>
-                    <span>2</span>
-                    <strong>Room</strong>
-                    <small>Select room type</small>
-                </li>
-                <li>
-                    <span>3</span>
-                    <strong>Details</strong>
-                    <small>Add guest info</small>
-                </li>
-                <li>
-                    <span>4</span>
-                    <strong>Submit</strong>
-                    <small>Send request</small>
-                </li>
-            </ol>
             <form action="../api/addGuest.php" method="POST">
                 <div class="field-row">
                     <div class="form-group">

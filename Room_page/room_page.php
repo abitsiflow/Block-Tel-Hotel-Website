@@ -35,11 +35,14 @@
                 <div class="room-copy reveal-copy">
                     <p class="room-kicker">Standard Room</p>
                     <h2>Cozy Room</h2>
+                    <h3>Price: 30 Emeralds</h3>
                     <p>
                         A comfortable room for guests who want a simple, relaxing stay. The space includes a soft bed,
                         study corner, storage chest, bedside lighting, and wide windows with a street view.
                     </p>
+
                     <ul class="room-features">
+                        <h3>Room Features</h3>
                         <li>Good for 1-2 guests</li>
                         <li>Bed, desk, bookshelf, and storage</li>
                         <li>Warm interior lighting</li>
@@ -55,11 +58,13 @@
                 <div class="room-copy reveal-copy">
                     <p class="room-kicker">Deluxe Room</p>
                     <h2>Grand Suite</h2>
+                    <h3>Price: 40 Emeralds</h3>
                     <p>
                         A bigger room with a refined atmosphere, perfect for longer stays or guests who want extra space.
                         It features a canopy bed, lounge area, fireplace, shelves, and decorative details throughout.
                     </p>
                     <ul class="room-features">
+                        <h3>Room Features</h3>
                         <li>Good for 2-4 guests</li>
                         <li>Lounge seats and fireplace area</li>
                         <li>Premium room decor</li>
@@ -75,11 +80,13 @@
                 <div class="room-copy reveal-copy">
                     <p class="room-kicker">Family Room</p>
                     <h2>Shared Stay</h2>
+                    <h3>Price: 50 Emeralds</h3>
                     <p>
                         A roomy setup made for friends or family visiting together. The layout gives everyone space to
                         rest, organize their items, and enjoy the signature Block-Tel wooden interior style.
                     </p>
                     <ul class="room-features">
+                        <h3>Room Features</h3>
                         <li>Good for groups and families</li>
                         <li>Extra storage and open space</li>
                         <li>Comfort-focused room layout</li>

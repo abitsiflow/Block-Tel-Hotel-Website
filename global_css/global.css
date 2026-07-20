@@ -1,10 +1,25 @@
 :root {
-    --ink: #1c2b27;
-    --gold: #b8935f;
-    --gold-soft: #d8c39f;
-    --cream: #f6f1e7;
-    --white: #ffffff;
-    --muted: #6b6259;
+    --ink: #1b1008;
+    --shadow: #0d0703;
+    --outline: #2b1b10;
+    --grass: #59a736;
+    --grass-dark: #2f6d1f;
+    --leaf: #73bf45;
+    --dirt: #8a5a32;
+    --dirt-dark: #5d351d;
+    --wood: #b98245;
+    --wood-dark: #6a3b1f;
+    --stone: #8b8f86;
+    --stone-light: #c2c6b6;
+    --sand: #e2cf8e;
+    --cream: #f7e9b3;
+    --white: #fff7d6;
+    --muted: #4d3a23;
+    --water: #3b8edb;
+    --redstone: #b6352e;
+    --diamond: #65d6d2;
+    --block-shadow: 6px 6px 0 var(--shadow);
+    --small-shadow: 4px 4px 0 var(--shadow);
 }
 
 * {
@@ -17,9 +32,13 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: var(--cream);
-    font-family: "Jost", sans-serif;
+    background:
+        linear-gradient(45deg, rgba(0, 0, 0, 0.08) 25%, transparent 25%) 0 0 / 32px 32px,
+        linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.12) 75%) 0 0 / 32px 32px,
+        linear-gradient(180deg, #87c95d 0 96px, #7db74f 96px 124px, var(--dirt) 124px 100%);
+    font-family: "Courier New", Consolas, monospace;
     color: var(--ink);
+    text-rendering: optimizeSpeed;
 }
 
 main {
@@ -28,4 +47,20 @@ main {
     align-items: center;
     justify-content: center;
     padding: 4.5rem 6vw;
+}
+
+img {
+    image-rendering: pixelated;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+::selection {
+    background: var(--diamond);
+    color: var(--shadow);
 }

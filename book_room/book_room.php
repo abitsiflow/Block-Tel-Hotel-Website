@@ -41,10 +41,10 @@
                                 <img src="../images/Block-Tel-Hotel-Room.png" alt="Block-Tel Hotel room with warm lighting" decoding="async">
                             </div>
                             <div class="carousel-item">
-                                <img src="../images/Block-Tel-Hotel-Room-2.png" alt="Block-Tel Hotel alternate view" decoding="async">
+                                <img src="../images/deluxe_room.png" alt="Block-Tel Hotel alternate view" decoding="async">
                             </div>
                             <div class="carousel-item">
-                                <img src="../images/Block-Tel-Hotel-Room-3.png" alt="Block-Tel Hotel alternate view" decoding="async">
+                                <img src="../images/family_suited.png" alt="Block-Tel Hotel alternate view" decoding="async">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#bookRoomCarousel" data-bs-slide="prev">

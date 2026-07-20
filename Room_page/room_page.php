@@ -89,6 +89,11 @@
             </article>
         </section>
     </main>
+
+     <footer id="site-footer">
+        <p>&copy; Block-Tel Hotel</p>
+    </footer>
+    
     <script src="room_page.js"></script>
 </body>
 </html>

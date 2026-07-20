@@ -29,11 +29,7 @@
                 <p class="eyebrow">Reserve Your Stay</p>
                 <h1>Book a Room</h1>
                 <p class="tagline">Choose your dates and we'll take care of the rest.</p>
-                     
-            <div class="cta-group">
-                <a href="../Room_page/room_page.php" class="btn btn-secondary">Show available room</a>
-                <a href="#booking-form" class="btn btn-primary">Book a room</a>
-            </div>
+                    
             </section>
         </header>
 

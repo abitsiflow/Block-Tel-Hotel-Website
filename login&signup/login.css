@@ -1,0 +1,389 @@
+/* Combined login / sign-up page.
+   Everything is scoped to .auth-page so the shared stylesheet stays untouched.
+   Sizes are in em and the card sets its own fluid font-size, so the whole form
+   grows and shrinks with the screen. */
+
+.auth-page {
+    --slide-ms: 700ms;
+    --slide-ease: cubic-bezier(0.77, 0, 0.18, 1);
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.auth-page .auth-card {
+    position: relative;
+    display: grid;
+    width: min(100%, 1120px);
+    overflow: hidden;
+    /* about 16px on phones, up to 18px on large screens */
+    font-size: clamp(1rem, 0.9rem + 0.35vw, 1.125rem);
+    background: var(--sand);
+    border: 5px solid var(--outline);
+    box-shadow: var(--block-shadow);
+}
+
+/* ---------- Form panels ----------
+   Both panels share one grid cell, so the card is always as tall as the taller
+   form and never jumps in height when you switch. */
+.auth-page .auth-panel {
+    grid-area: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(1.75em, 4.5vw, 3.5em);
+}
+
+.auth-page .auth-brand {
+    align-self: flex-start;
+    display: inline-block;
+    margin-bottom: 1.6em;
+    color: var(--grass-dark);
+    font-size: 1.05em;
+    font-weight: 900;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+.auth-page .auth-eyebrow {
+    margin-bottom: 0.5em;
+    color: var(--grass-dark);
+    font-size: 0.8em;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.auth-page .auth-title {
+    color: var(--outline);
+    font-size: clamp(1.9em, 1em + 2.6vw, 2.9em);
+    line-height: 1.1;
+}
+
+.auth-page .auth-title:focus {
+    outline: none; /* the heading only receives focus from login.js after a switch */
+}
+
+.auth-page .auth-description {
+    margin-top: 0.7em;
+    color: var(--muted);
+    font-size: 1em;
+    line-height: 1.55;
+}
+
+.auth-page .auth-form {
+    display: grid;
+    gap: 1.25em;
+    margin-top: 1.8em;
+}
+
+.auth-page .auth-field {
+    display: grid;
+    gap: 0.45em;
+}
+
+.auth-page .auth-field label {
+    color: var(--outline);
+    font-size: 0.9em;
+    font-weight: 800;
+}
+
+.auth-page .auth-field input {
+    width: 100%;
+    min-height: 3.1em;
+    padding: 0.75em 0.95em;
+    color: var(--ink);
+    font: inherit; /* keeps inputs at 16px or more, so iPhones don't zoom in on focus */
+    background: var(--white);
+    border: 3px solid var(--outline);
+    border-radius: 0;
+}
+
+.auth-page .auth-field input:focus-visible,
+.auth-page .auth-checkbox input:focus-visible,
+.auth-page .auth-link:focus-visible,
+.auth-page .auth-brand:focus-visible,
+.auth-page .auth-submit:focus-visible {
+    outline: 3px solid var(--water);
+    outline-offset: 3px;
+}
+
+.auth-page .auth-options {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75em;
+    font-size: 0.9em;
+}
+
+.auth-page .auth-checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55em;
+    color: var(--muted);
+    cursor: pointer;
+}
+
+.auth-page .auth-checkbox input {
+    width: 1.1em;
+    height: 1.1em;
+    accent-color: var(--grass-dark);
+}
+
+.auth-page .auth-link {
+    color: var(--grass-dark);
+    font-weight: 800;
+    text-underline-offset: 3px;
+}
+
+.auth-page .auth-submit {
+    min-height: 3.2em;
+    margin-top: 0.4em;
+    padding: 0.8em 1.1em;
+    color: var(--white);
+    font: inherit;
+    font-weight: 900;
+    background: var(--grass-dark);
+    border: 3px solid var(--outline);
+    box-shadow: var(--small-shadow);
+    cursor: pointer;
+    transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+}
+
+.auth-page .auth-submit:hover {
+    background: var(--grass);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--shadow);
+}
+
+.auth-page .auth-submit:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--shadow);
+}
+
+.auth-page .auth-switch {
+    margin-top: 1.6em;
+    color: var(--muted);
+    font-size: 0.95em;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.auth-page .auth-mobile-switch {
+    display: none;
+}
+
+/* ---------- Sliding overlay (shown on desktop only) ----------
+   Login mode:    overlay covers the LEFT half  (register is hidden under it).
+   Register mode: overlay covers the RIGHT half (login is hidden under it). */
+.auth-page .auth-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    display: none;
+    width: 50%;
+    overflow: hidden;
+    color: var(--white);
+    background-color: var(--grass-dark);
+    background-image:
+        linear-gradient(45deg, rgb(0 0 0 / 10%) 25%, transparent 25%, transparent 75%, rgb(0 0 0 / 10%) 75%),
+        linear-gradient(45deg, rgb(0 0 0 / 10%) 25%, transparent 25%, transparent 75%, rgb(0 0 0 / 10%) 75%);
+    background-size: 48px 48px;
+    background-position: 0 0, 24px 24px;
+    /* outline on both sides; the one touching the card edge is clipped by overflow: hidden */
+    box-shadow: -5px 0 0 var(--outline), 5px 0 0 var(--outline);
+    transition: transform var(--slide-ms) var(--slide-ease);
+}
+
+.auth-page .auth-overlay-copy {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1em;
+    padding: clamp(1.75em, 4.5vw, 3.5em);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 200ms ease, visibility 0s linear 200ms;
+}
+
+/* Show the message for the OTHER form: sign-up while logging in, and vice versa.
+   It fades in after the slide is about 40% done. */
+.auth-page[data-mode="login"] .auth-overlay-copy--to-register,
+.auth-page[data-mode="register"] .auth-overlay-copy--to-login {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 300ms ease calc(var(--slide-ms) * 0.4), visibility 0s;
+}
+
+.auth-page .auth-overlay .auth-eyebrow {
+    margin: 0;
+    color: var(--sand);
+}
+
+.auth-page .auth-overlay-title {
+    margin: 0;
+    color: var(--white);
+    font-size: clamp(1.9em, 1em + 2.4vw, 2.7em);
+    line-height: 1.1;
+}
+
+.auth-page .auth-overlay-text {
+    margin: 0;
+    max-width: 30ch;
+    font-size: 1.05em;
+    line-height: 1.55;
+}
+
+.auth-page .auth-overlay-btn {
+    min-height: 3.2em;
+    margin-top: 0.5em;
+    padding: 0.8em 1.8em;
+    color: var(--outline);
+    font: inherit;
+    font-weight: 900;
+    background: var(--sand);
+    border: 3px solid var(--outline);
+    box-shadow: var(--small-shadow);
+    cursor: pointer;
+    transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.auth-page .auth-overlay-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--shadow);
+}
+
+.auth-page .auth-overlay-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--shadow);
+}
+
+.auth-page .auth-overlay-btn:focus-visible {
+    outline: 3px solid var(--white);
+    outline-offset: 3px;
+}
+
+/* ---------- Content rises in after each switch ---------- */
+@keyframes auth-rise {
+    from {
+        opacity: 0;
+        transform: translateY(0.9em);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.auth-page[data-mode="login"] .auth-panel--login > *,
+.auth-page[data-mode="register"] .auth-panel--register > * {
+    animation: auth-rise 450ms ease backwards;
+    animation-delay: calc(var(--slide-ms) * 0.4 + var(--i, 0) * 60ms);
+}
+
+.auth-page .auth-panel > :nth-child(1) { --i: 0; }
+.auth-page .auth-panel > :nth-child(2) { --i: 1; }
+.auth-page .auth-panel > :nth-child(3) { --i: 2; }
+.auth-page .auth-panel > :nth-child(4) { --i: 3; }
+.auth-page .auth-panel > :nth-child(5) { --i: 4; }
+.auth-page .auth-panel > :nth-child(6) { --i: 5; }
+
+/* login.js adds .is-booting for the first frames so the page doesn't animate on load */
+.auth-page.is-booting * {
+    transition: none !important;
+}
+
+/* =========================================================
+   Desktop and tablet (861px and up): split card
+   ========================================================= */
+@media (min-width: 861px) {
+    .auth-page .auth-card {
+        min-height: clamp(560px, 82svh, 800px);
+    }
+
+    .auth-page .auth-panel {
+        width: 50%;
+        transition: transform var(--slide-ms) var(--slide-ease);
+    }
+
+    /* register = left half, login = right half */
+    .auth-page .auth-panel--register {
+        justify-self: start;
+    }
+
+    .auth-page .auth-panel--login {
+        justify-self: end;
+    }
+
+    /* The hidden form waits a little toward its own side, then slides into place
+       in the same direction the overlay is travelling. */
+    .auth-page[data-mode="login"] .auth-panel--register {
+        transform: translateX(-20%);
+    }
+
+    .auth-page[data-mode="register"] .auth-panel--login {
+        transform: translateX(20%);
+    }
+
+    .auth-page .auth-overlay {
+        display: block;
+    }
+
+    .auth-page[data-mode="register"] .auth-overlay {
+        transform: translateX(100%);
+    }
+}
+
+/* =========================================================
+   Phones and small tablets (860px and down): one form at a time
+   ========================================================= */
+@media (max-width: 860px) {
+    .auth-page {
+        --slide-ms: 550ms;
+    }
+
+    .auth-page .auth-card {
+        width: min(100%, 34rem);
+    }
+
+    .auth-page .auth-panel {
+        padding: clamp(1.5em, 6vw, 2.25em);
+        transition: transform var(--slide-ms) var(--slide-ease);
+    }
+
+    /* login mode: register waits off-screen to the left */
+    .auth-page[data-mode="login"] .auth-panel--register {
+        transform: translateX(-100%);
+    }
+
+    /* register mode: login waits off-screen to the right */
+    .auth-page[data-mode="register"] .auth-panel--login {
+        transform: translateX(100%);
+    }
+
+    .auth-page .auth-mobile-switch {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-page .auth-card {
+        border-width: 4px;
+        box-shadow: 4px 4px 0 var(--shadow);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .auth-page,
+    .auth-page * {
+        animation: none !important;
+        transition-duration: 1ms !important;
+        transition-delay: 0s !important;
+    }
+}

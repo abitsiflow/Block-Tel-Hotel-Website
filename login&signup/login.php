@@ -104,3 +104,94 @@
     <script src="login.js"></script>
 </body>
 </html>
+
+
+<?php
+// signup.php - register a new user
+session_start();
+require 'db.php';
+ 
+$errors = [];
+$username = '';
+$email = '';
+ 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // 1. Get the form values
+    $username = trim($_POST['username'] ?? '');
+    $email    = trim($_POST['email'] ?? '');
+    $password = $_POST['password'] ?? '';
+    $confirm  = $_POST['confirm_password'] ?? '';
+ 
+    // 2. Validate
+    if ($username === '' || strlen($username) < 3) {
+        $errors[] = 'Username must be at least 3 characters.';
+    }
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = 'Please enter a valid email address.';
+    }
+    if (strlen($password) < 8) {
+        $errors[] = 'Password must be at least 8 characters.';
+    }
+    if ($password !== $confirm) {
+        $errors[] = 'Passwords do not match.';
+    }
+ 
+    // 3. Check if username or email is already taken
+    if (!$errors) {
+        $stmt = $pdo->prepare('SELECT id FROM users WHERE username = ? OR email = ?');
+        $stmt->execute([$username, $email]);
+        if ($stmt->fetch()) {
+            $errors[] = 'Username or email is already registered.';
+        }
+    }
+ 
+    // 4. Save the user with a HASHED password
+    if (!$errors) {
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $pdo->prepare('INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)');
+        $stmt->execute([$username, $email, $hash]);
+ 
+        $_SESSION['flash'] = 'Account created! You can now log in.';
+        header('Location: login.php');
+        exit;
+    }
+}
+?>
+
+<?php
+// login.php - log an existing user in
+session_start();
+require 'db.php';
+ 
+// Already logged in? Skip the form.
+if (isset($_SESSION['user_id'])) {
+    header('Location: dashboard.php');
+    exit;
+}
+ 
+$error = '';
+$flash = $_SESSION['flash'] ?? '';
+unset($_SESSION['flash']);          // show the message only once
+ 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $login    = trim($_POST['login'] ?? '');   // username OR email
+    $password = $_POST['password'] ?? '';
+ 
+    // 1. Find the user
+    $stmt = $pdo->prepare('SELECT id, username, password_hash FROM users WHERE username = ? OR email = ?');
+    $stmt->execute([$login, $login]);
+    $user = $stmt->fetch();
+ 
+    // 2. Compare the typed password with the stored hash
+    if ($user && password_verify($password, $user['password_hash'])) {
+        session_regenerate_id(true);           // prevents session fixation
+        $_SESSION['user_id']  = $user['id'];
+        $_SESSION['username'] = $user['username'];
+        header('Location: dashboard.php');
+        exit;
+    }
+ 
+    // Same message for "no such user" and "wrong password" on purpose
+    $error = 'Invalid username/email or password.';
+}
+?>
